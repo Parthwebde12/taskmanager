@@ -1,0 +1,46 @@
+:root {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 14px;
+margin: 10px 0;
+background: var(--card);
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.task.completed {
+text-decoration: line-through;
+opacity: 0.6;
+}
+
+
+.badge {
+padding: 4px 10px;
+border-radius: 999px;
+font-size: 12px;
+background: var(--primary);
+color: white;
+}
+
+
+.navbar {
+background: var(--card);
+border-bottom: 1px solid #e5e7eb;
+padding: 14px 22px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
+.navbar h3 { margin: 0; }
+
+
+.navbar .right {
+display: flex;
+gap: 10px;
+align-items: center;
+}
+
