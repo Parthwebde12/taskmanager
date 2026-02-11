@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import TaskForm from "../components/TaskForm";
 import TaskItem from "../components/TaskItem";
 import Filters from "../components/Filters";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/Authcontext";
 
 export default function Dashboard() {
   const { user } = useAuth();

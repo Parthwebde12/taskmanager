@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "./context/Authcontext";
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
