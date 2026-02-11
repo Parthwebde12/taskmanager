@@ -1,52 +1,24 @@
-export default function TaskForm({
-  title,
-  setTitle,
-  description,
-  setDescription,
-  category,
-  setCategory,
-  dueDate,
-  setDueDate,
-  onSubmit,
-  editing,
-}) {
+import { useState } from "react";
+
+export default function TaskForm({ onAdd }) {
+  const [title, setTitle] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) return;
+    onAdd({ title });
+    setTitle("");
+  };
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit} className="task-form">
       <input
         type="text"
-        placeholder="Task title"
+        placeholder="New task..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required
       />
-
-      <input
-        type="text"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-
-      <div className="row">
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option>Work</option>
-          <option>Study</option>
-          <option>Personal</option>
-          <option>Health</option>
-        </select>
-
-        <input
-          type="date"
-          value={dueDate}
-          onChange={(e) => setDueDate(e.target.value)}
-          required
-        />
-      </div>
-
-      <button type="submit">
-        {editing ? "Update Task" : "Add Task"}
-      </button>
+      <button type="submit">Add</button>
     </form>
   );
 }

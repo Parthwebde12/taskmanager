@@ -1,23 +1,15 @@
-export default function TaskItem({ task, onToggle, onDelete, onEdit }) {
+export default function TaskItem({ task, onToggle, onDelete }) {
   return (
-    <div className={`task ${task.completed ? "completed" : ""}`}>
-      <div>
-        <h4 style={{ margin: "0 0 4px" }}>{task.title}</h4>
-        <small>{task.description}</small>
-        <div style={{ marginTop: 6, display: "flex", gap: 8 }}>
-          <span className="badge">{task.category}</span>
-          <span className="badge">Due: {task.dueDate}</span>
-        </div>
-      </div>
-      <div className="row">
-        <button onClick={() => onToggle(task.id)}>✓</button>
-        <button className="secondary" onClick={() => onEdit(task)}>
-          Edit
-        </button>
-        <button className="danger" onClick={() => onDelete(task.id)}>
-          ✕
-        </button>
-      </div>
+    <div className="task-item">
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={() => onToggle(task.id)}
+      />
+      <span style={{ textDecoration: task.completed ? "line-through" : "" }}>
+        {task.title}
+      </span>
+      <button onClick={() => onDelete(task.id)}>❌</button>
     </div>
   );
 }

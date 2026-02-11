@@ -1,30 +1,25 @@
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";
-import { useTheme } from "/src/context/ThemeContext";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+  const { toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const { logout, user } = useAuth();
-  const { theme, toggleTheme } = useTheme();
 
-  function handleLogout() {
+  const handleLogout = () => {
     logout();
     navigate("/login");
-  }
+  };
 
   return (
-    <div className="navbar">
-      <h3>TaskFlow Pro</h3>
-      <div className="right">
-        <span className="badge">{user.role.toUpperCase()}</span>
-        <button className="secondary" onClick={toggleTheme}>
-          {theme === "light" ? "🌙" : "☀️"}
-        </button>
-        {user.role === "admin" && (
-          <button onClick={() => navigate("/admin")}>Admin</button>
-        )}
+    <nav className="navbar">
+      <h3>TaskManager</h3>
+      <div>
+        <button onClick={toggleTheme}>Theme</button>
+        {user?.role === "admin" && <Link to="/admin">Admin</Link>}
         <button onClick={handleLogout}>Logout</button>
       </div>
-    </div>
+    </nav>
   );
 }
